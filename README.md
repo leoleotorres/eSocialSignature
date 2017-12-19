@@ -46,7 +46,8 @@ begin
   dllHandle := LoadLibrary('eSocialSignature.dll');
   if dllHandle < HINSTANCE_ERROR then
   begin
-    raise Exception.Create('Não foi possível encontrar a DLL ' + DLLNAME + '.' + #13 + SysErrorMessage(GetLastError));
+    raise Exception.Create('Não foi possível encontrar a DLL ' + DLLNAME + '.' +#13+ 
+        SysErrorMessage(GetLastError));
   end;
   try
     @proc := GetProcAddress(dllHandle, 'SignSHA256Ansi');
@@ -69,7 +70,8 @@ begin
   dllHandle := LoadLibrary('eSocialSignature.dll');
   if dllHandle < HINSTANCE_ERROR then
   begin
-    raise Exception.Create('Não foi possível encontrar a DLL ' + DLLNAME + '.' + #13 + SysErrorMessage(GetLastError));
+    raise Exception.Create('Não foi possível encontrar a DLL ' + DLLNAME + '.' +#13+ 
+        SysErrorMessage(GetLastError));
   end;
   try
     @proc := GetProcAddress(dllHandle, 'SignSHA256Unicode');
