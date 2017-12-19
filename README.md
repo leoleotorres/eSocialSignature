@@ -36,9 +36,11 @@ procedure SignSHA256Unicode(
 
 Chamada dinâmica:
 ```
-procedure SignSHA256Ansi(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; ASerialNumber: PAnsiChar; APassword: PAnsiChar);
+procedure SignSHA256Ansi(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; 
+  ASerialNumber: PAnsiChar; APassword: PAnsiChar);
 type
-  TProc = procedure(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; ASerialNumber: PAnsiChar; APassword: PAnsiChar); stdcall;
+  TProc = procedure(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; 
+      ASerialNumber: PAnsiChar; APassword: PAnsiChar); stdcall;
 var
   dllHandle: THandle;
   proc: TProc;
