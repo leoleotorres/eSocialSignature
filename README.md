@@ -34,7 +34,7 @@ procedure SignSHA256Unicode(
   certificatePassowrd: PChar); stdcall; external 'eSocialSignature.dll'; 
 ```
 
-Chamada dinâmica:
+Referência dinâmica:
 ```
 procedure SignSHA256Ansi(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; 
   ASerialNumber: PAnsiChar; APassword: PAnsiChar);
@@ -109,7 +109,7 @@ var
 begin
   xml := PAnsiChar(AnsiString(xmlDoc.XML.Text));
   TESocialSignature.SignSHA256Unicode(xml, 'evtInfoEmpregador', 'eaee2da6eabd4e0aa211e2a18e7c749c', '1234');
-  xml.LoadXml(xml);
+  xmlDoc.LoadXml(xml);
 end;
 ```
 
@@ -121,6 +121,6 @@ var
 begin
   xml := PChar(xmlDoc.XML.Text);
   TESocialSignature.SignSHA256Unicode(xml, 'evtInfoEmpregador', 'eaee2da6eabd4e0aa211e2a18e7c749c', '1234');
-  xml.LoadXml(xml);
+  xmlDoc.LoadXml(xml);
 end;
 ```
