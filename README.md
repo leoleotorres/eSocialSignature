@@ -11,6 +11,8 @@ DLL para assinatura do XML do eSocial com Certificado A3 via HASH SHA256.
 
 ## Como usar
 
+- Há duas DLL´s que precisam ser copiadas para a pasta do executável do seu projeto, a eSocialSignature.dll e a Security.Cryptography.dll. Ambas podem ser encontradas na pasta do projeto de exemplo em **[Delphi](https://github.com/tiagopsilva/eSocialSignature/tree/master/DelphiTest)**;
+
 - Há dois métodos, sendo que `SignSHA256Ansi` é específico para linguagens não-unicode (no caso do Delphi são as versões inferiores a 2009);
 
 - Ambas podem ser usadas em linguages com Unicode, desde que seja usado da maneira correta, sendo `SignSHA256Unicode` a indicada para essas linguages (no caso do Delphi são as versões 2009 e superiores);
