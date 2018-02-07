@@ -127,7 +127,7 @@ begin
 end;
 ```
 
-## LICENÇA:
+## Licença
 
 MIT License
 
