@@ -19,7 +19,7 @@ namespace eSocialSignatureTests
             var xml = doc.OuterXml;
 
             var log = new Logger("logTest.txt");
-            new HashSHA256(log).Sign(ref xml, "evtInfoEmpregador", SerialNumber, "1234");
+            new HashSHA256(log).Sign(xml, "evtInfoEmpregador", SerialNumber, "1234");
             
             var signedXml = new XmlDocument();
             signedXml.LoadXml(xml);

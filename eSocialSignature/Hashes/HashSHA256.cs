@@ -20,7 +20,7 @@ namespace eSocialSignature.Hashes
             _log = log;
         }
 
-        public void Sign(ref string xml, string nodeToSign, string certificateSerialNumber, string certificatePassword = null)
+        public string Sign(string xml, string nodeToSign, string certificateSerialNumber, string certificatePassword = null)
         {
             try
             {
@@ -148,10 +148,13 @@ namespace eSocialSignature.Hashes
                 var signatureCount = doc.GetElementsByTagName("Signature").Count;
                 _log.Debug($"Quantidade de assinaturas geradas: {signatureCount}");
 
-                xml = doc.OuterXml;
+                //xml = doc.OuterXml;
+
+                return doc.OuterXml;
             }
             catch (Exception e)
             {
+                _log.Debug($"Erro");
                 _log.Error(e, "");
                 throw;
             }

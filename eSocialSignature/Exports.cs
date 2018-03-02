@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Xml;
 using eSocialSignature.Hashes;
 using eSocialSignature.Log;
 using RGiesecke.DllExport;
@@ -16,7 +17,7 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPStr)] string certificatePassword)
         {
             var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            new HashSHA256(log).Sign(ref xml, nodeToSign, certificateSerialNumber, certificatePassword);
+            xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
         }
 
         [DllExport("SignSHA256Unicode", CallingConvention = CallingConvention.StdCall)]
@@ -27,7 +28,37 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPWStr)] string certificatePassword)
         {
             var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            new HashSHA256(log).Sign(ref xml, nodeToSign, certificateSerialNumber, certificatePassword);
+            xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
+        }
+
+        [DllExport("SignFileWithSHA256Ansi", CallingConvention = CallingConvention.StdCall)]
+        public static void SignFileWithSHA256Ansi(
+            [MarshalAs(UnmanagedType.LPStr)] string fileName,
+            [MarshalAs(UnmanagedType.LPStr)] string nodeToSign,
+            [MarshalAs(UnmanagedType.LPStr)] string certificateSerialNumber,
+            [MarshalAs(UnmanagedType.LPStr)] string certificatePassword)
+        {
+            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+            var doc = new XmlDocument();
+            doc.Load(fileName);
+            var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
+            doc.InnerXml = xml;
+            doc.Save(fileName);
+        }
+
+        [DllExport("SignFileWithSHA256Unicode", CallingConvention = CallingConvention.StdCall)]
+        public static void SignFileWithSHA256Unicode(
+            [MarshalAs(UnmanagedType.LPWStr)] string fileName,
+            [MarshalAs(UnmanagedType.LPWStr)] string nodeToSign,
+            [MarshalAs(UnmanagedType.LPWStr)] string certificateSerialNumber,
+            [MarshalAs(UnmanagedType.LPWStr)] string certificatePassword)
+        {
+            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+            var doc = new XmlDocument();
+            doc.Load(fileName);
+            var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
+            doc.InnerXml = xml;
+            doc.Save(fileName);
         }
     }
 }
