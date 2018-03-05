@@ -16,8 +16,22 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPStr)] string certificateSerialNumber,
             [MarshalAs(UnmanagedType.LPStr)] string certificatePassword)
         {
-            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
+            try
+            {
+                Console.WriteLine("Parâmetros:");
+                Console.WriteLine($"Xml: {xml}");
+                Console.WriteLine($"nodeToSign: {nodeToSign}");
+                Console.WriteLine($"certificateSerialNumber: {certificateSerialNumber}");
+                Console.WriteLine($"certificatePassword: {certificatePassword}");
+
+                var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+                xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         [DllExport("SignSHA256Unicode", CallingConvention = CallingConvention.StdCall)]
@@ -27,8 +41,22 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPWStr)] string certificateSerialNumber,
             [MarshalAs(UnmanagedType.LPWStr)] string certificatePassword)
         {
-            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
+            try
+            {
+                Console.WriteLine("Parâmetros:");
+                Console.WriteLine($"Xml: {xml}");
+                Console.WriteLine($"nodeToSign: {nodeToSign}");
+                Console.WriteLine($"certificateSerialNumber: {certificateSerialNumber}");
+                Console.WriteLine($"certificatePassword: {certificatePassword}");
+
+                var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+                xml = new HashSHA256(log).Sign(xml, nodeToSign, certificateSerialNumber, certificatePassword) + null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         [DllExport("SignFileWithSHA256Ansi", CallingConvention = CallingConvention.StdCall)]
@@ -38,12 +66,28 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPStr)] string certificateSerialNumber,
             [MarshalAs(UnmanagedType.LPStr)] string certificatePassword)
         {
-            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            var doc = new XmlDocument();
-            doc.Load(fileName);
-            var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
-            doc.InnerXml = xml;
-            doc.Save(fileName);
+            try
+            {
+                Console.WriteLine("Parâmetros:");
+                Console.WriteLine($"fileName: {fileName}");
+                Console.WriteLine($"nodeToSign: {nodeToSign}");
+                Console.WriteLine($"certificateSerialNumber: {certificateSerialNumber}");
+                Console.WriteLine($"certificatePassword: {certificatePassword}");
+
+                var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+                var doc = new XmlDocument();
+                doc.Load(fileName);
+                var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
+                doc.InnerXml = xml;
+                doc.Save(fileName);
+
+                Console.WriteLine("Saved!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         [DllExport("SignFileWithSHA256Unicode", CallingConvention = CallingConvention.StdCall)]
@@ -53,12 +97,28 @@ namespace eSocialSignature
             [MarshalAs(UnmanagedType.LPWStr)] string certificateSerialNumber,
             [MarshalAs(UnmanagedType.LPWStr)] string certificatePassword)
         {
-            var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
-            var doc = new XmlDocument();
-            doc.Load(fileName);
-            var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
-            doc.InnerXml = xml;
-            doc.Save(fileName);
+            try
+            {
+                Console.WriteLine("Parâmetros:");
+                Console.WriteLine($"fileName: {fileName}");
+                Console.WriteLine($"nodeToSign: {nodeToSign}");
+                Console.WriteLine($"certificateSerialNumber: {certificateSerialNumber}");
+                Console.WriteLine($"certificatePassword: {certificatePassword}");
+
+                var log = new Logger($"log{DateTime.Now:yyyyMMdd}.txt");
+                var doc = new XmlDocument();
+                doc.Load(fileName);
+                var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
+                doc.InnerXml = xml;
+                doc.Save(fileName);
+
+                Console.WriteLine("Saved!");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

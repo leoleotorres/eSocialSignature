@@ -148,13 +148,11 @@ namespace eSocialSignature.Hashes
                 var signatureCount = doc.GetElementsByTagName("Signature").Count;
                 _log.Debug($"Quantidade de assinaturas geradas: {signatureCount}");
 
-                //xml = doc.OuterXml;
-
                 return doc.OuterXml;
             }
             catch (Exception e)
             {
-                _log.Debug($"Erro");
+                _log.Debug("Erro");
                 _log.Error(e, "");
                 throw;
             }

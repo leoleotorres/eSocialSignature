@@ -1,66 +1,86 @@
 <eSocial xmlns="http://www.esocial.gov.br/schema/lote/eventos/envio/v1_1_1">
-	<envioLoteEventos grupo="1">
-		<ideEmpregador>
-			<tpInsc>1</tpInsc>
-			<nrInsc>12345678</nrInsc>
-		</ideEmpregador>
-		<ideTransmissor>
-			<tpInsc>1</tpInsc>
-			<nrInsc>12345678901234</nrInsc>
-		</ideTransmissor>
-		<eventos>
-			<evento Id="ID1234567890123456789012345678901234">
-				<eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v02_04_01">
-					<evtInfoEmpregador Id="ID1234567890123456789012345678901234">
-						<ideEvento>
-							<tpAmb>2</tpAmb>
-							<procEmi>1</procEmi>
-							<verProc>1.0</verProc>
-						</ideEvento>
-						<ideEmpregador>
-							<tpInsc>1</tpInsc>
-							<nrInsc>12345678</nrInsc>
-						</ideEmpregador>
-						<infoEmpregador>
-							<inclusao>
-								<idePeriodo>
-									<iniValid>2017-12</iniValid>
-								</idePeriodo>
-								<infoCadastro>
-									<nmRazao>RAZAO SOCIAL DA EMPRESA</nmRazao>
-									<classTrib>99</classTrib>
-									<natJurid>2062</natJurid>
-									<indCoop>0</indCoop>
-									<indConstr>1</indConstr>
-									<indDesFolha>0</indDesFolha>
-									<indOptRegEletron>1</indOptRegEletron>
-									<indEntEd>S</indEntEd>
-									<indEtt>N</indEtt>
-									<contato>
-										<nmCtt>NOME PARA CONTATO 1</nmCtt>
-										<cpfCtt>11111111111</cpfCtt>
-										<foneFixo>1133333333</foneFixo>
-										<foneCel>11999999999</foneCel>
-										<email>email@provedor.com.br</email>
-									</contato>
-									<softwareHouse>
-										<cnpjSoftHouse>11111111111111</cnpjSoftHouse>
-										<nmRazao>RAZAO SOCIAL DA SOFTWARE HOUSE</nmRazao>
-										<nmCont>NOME PARA CONTATO DA SOFTWARE HOUSE</nmCont>
-										<telefone>1133334444</telefone>
-										<email>software@house.com.br</email>
-									</softwareHouse>
-									<infoComplementares>
-										<situacaoPJ>
-											<indSitPJ>4</indSitPJ>
-										</situacaoPJ>
-									</infoComplementares>
-								</infoCadastro>
-							</inclusao>
-						</infoEmpregador>
-					</evtInfoEmpregador>					
-				</eSocial>
-			</evento>
-		</eventos>
-	</envioLoteEventos>
+  <envioLoteEventos grupo="1">
+    <ideEmpregador>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678</nrInsc>
+    </ideEmpregador>
+    <ideTransmissor>
+      <tpInsc>1</tpInsc>
+      <nrInsc>12345678901234</nrInsc>
+    </ideTransmissor>
+    <eventos>
+      <evento Id="ID1234567890123456789012345678901234">
+        <eSocial xmlns="http://www.esocial.gov.br/schema/evt/evtInfoEmpregador/v02_04_01">
+          <evtInfoEmpregador Id="ID1234567890123456789012345678901234">
+            <ideEvento>
+              <tpAmb>2</tpAmb>
+              <procEmi>1</procEmi>
+              <verProc>1.0</verProc>
+            </ideEvento>
+            <ideEmpregador>
+              <tpInsc>1</tpInsc>
+              <nrInsc>12345678</nrInsc>
+            </ideEmpregador>
+            <infoEmpregador>
+              <inclusao>
+                <idePeriodo>
+                  <iniValid>2017-12</iniValid>
+                </idePeriodo>
+                <infoCadastro>
+                  <nmRazao>RAZAO SOCIAL DA EMPRESA</nmRazao>
+                  <classTrib>99</classTrib>
+                  <natJurid>2062</natJurid>
+                  <indCoop>0</indCoop>
+                  <indConstr>1</indConstr>
+                  <indDesFolha>0</indDesFolha>
+                  <indOptRegEletron>1</indOptRegEletron>
+                  <indEntEd>S</indEntEd>
+                  <indEtt>N</indEtt>
+                  <contato>
+                    <nmCtt>NOME PARA CONTATO 1</nmCtt>
+                    <cpfCtt>11111111111</cpfCtt>
+                    <foneFixo>1133333333</foneFixo>
+                    <foneCel>11999999999</foneCel>
+                    <email>email@provedor.com.br</email>
+                  </contato>
+                  <softwareHouse>
+                    <cnpjSoftHouse>11111111111111</cnpjSoftHouse>
+                    <nmRazao>RAZAO SOCIAL DA SOFTWARE HOUSE</nmRazao>
+                    <nmCont>NOME PARA CONTATO DA SOFTWARE HOUSE</nmCont>
+                    <telefone>1133334444</telefone>
+                    <email>software@house.com.br</email>
+                  </softwareHouse>
+                  <infoComplementares>
+                    <situacaoPJ>
+                      <indSitPJ>4</indSitPJ>
+                    </situacaoPJ>
+                  </infoComplementares>
+                </infoCadastro>
+              </inclusao>
+            </infoEmpregador>
+          </evtInfoEmpregador>
+          <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+            <SignedInfo>
+              <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+              <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+              <Reference URI="">
+                <Transforms>
+                  <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                  <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+                <DigestValue>L5sODIVPfFWnqoikclzPXDI5Ga+eMuSElsv1k3b313A=</DigestValue>
+              </Reference>
+            </SignedInfo>
+            <SignatureValue>jTTDsFbCEaN0goVdaQho9PFipalbc7V1tqw3q9Xf74UBGt5FZYVLuhK1WQUG2gzxgdpPvxjcC1DuvWH1N8eWBlT6+uOxxXaNIM91UfRZskbdDvjviyPrvE1RIq0WyXPp1h2MpFsFCT9t7mpcy30+OPmcLIgsyRXiSxX4MbUzzZxPz9dwFt1aTeQhiKblD5BMiz02d4TggjbP1DG6L4pTwppmcZre/DxoK3NBsy3ihqWuRfcY9WCwKab61sDHej++tlJPZctB4fIO4JYtgy2123ZjsgzCtXN/fCCm0RBu11Ul3UDIaNCzX6PssYKYPnhhLqjGzNH4A5SmTTifcwQo3A==</SignatureValue>
+            <KeyInfo>
+              <X509Data>
+                <X509Certificate>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</X509Certificate>
+              </X509Data>
+            </KeyInfo>
+          </Signature>
+        </eSocial>
+      </evento>
+    </eventos>
+  </envioLoteEventos>
 </eSocial>

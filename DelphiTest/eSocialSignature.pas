@@ -29,7 +29,19 @@ procedure SignSHA256Unicode(
   var xml: PChar;
   nodeToSign: PChar;
   certificateSerialNumber: PChar;
-  certificatePassowrd: PChar); stdcall; external 'eSocialSignature.dll'; 
+  certificatePassowrd: PChar); stdcall; external 'eSocialSignature.dll';
+
+procedure SignFileWithSHA256Ansi(
+  var xml: PAnsiChar;
+  nodeToSign: PAnsiChar;
+  certificateSerialNumber: PAnsiChar;
+  certificatePassword: PAnsiChar); stdcall; external 'eSocialSignature.dll'; 
+
+procedure SignFileWithSHA256Unicode(
+  var xml: PChar;
+  nodeToSign: PChar;
+  certificateSerialNumber: PChar;
+  certificatePassowrd: PChar); stdcall; external 'eSocialSignature.dll';
 }
 
 
@@ -83,7 +95,7 @@ end;
 
 class procedure TESocialSignature.SignFileWithSHA256Ansi(AXmlFileName, ANodeToSign, ASerialNumber, APassword: PAnsiChar);
 type
-  TProc = procedure(var AXml: PAnsiChar; ANodeToSign: PAnsiChar; ASerialNumber: PAnsiChar; APassword: PAnsiChar); stdcall;
+  TProc = procedure(AXmlFileName: PAnsiChar; ANodeToSign: PAnsiChar; ASerialNumber: PAnsiChar; APassword: PAnsiChar); stdcall;
 var
   dllHandle: THandle;
   proc: TProc;
@@ -106,7 +118,7 @@ end;
 
 class procedure TESocialSignature.SignFileWithSHA256Unicode(AXmlFileName, ANodeToSign, ASerialNumber, APassword: PAnsiChar);
 type
-  TProc = procedure(var AXml: PChar; ANodeToSign: PChar; ASerialNumber: PChar; APassword: PChar); stdcall;
+  TProc = procedure(AXmlFileName: PChar; ANodeToSign: PChar; ASerialNumber: PChar; APassword: PChar); stdcall;
 var
   dllHandle: THandle;
   proc: TProc;

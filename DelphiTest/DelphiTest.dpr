@@ -24,18 +24,20 @@ var
   xmlAnsi: PAnsiChar;
 {$endif}
 
-const
-  SERIAL_NUMBER = '41dacd08daa347b1a000d83eb510f4a3';
-  PASSWORD = '1234';
+  CertTokenA3SerialNumber: string;
+  CertTokenA3Pin: string;
 
 begin
   fileXml := TStringList.Create;
   try
     try
+      CertTokenA3SerialNumber := GetEnvironmentVariable('CERT_TOKEN_A3_SERIAL_NUMBER');
+      CertTokenA3Pin := GetEnvironmentVariable('CERT_TOKEN_A3_PIN'); 
+
       directory := ExtractFilePath(ParamStr(0));
       fileName := directory + 'envio-sem-assinatura.xml';
-      fileXml.LoadFromFile(fileName);
 
+(*
 {$ifdef UNICODE}
       xmlUnicode := PChar(fileXml.Text);
 {$else}
@@ -53,6 +55,17 @@ begin
       Writeln('');
       Writeln(AnsiString(xmlAnsi));
 {$endif}
+*)
+
+      TESocialSignature.SignFileWithSHA256Ansi(
+        PAnsiChar(AnsiString(fileName)),
+        PAnsiChar(AnsiString('evtInfoEmpregador')),
+        PAnsiChar(AnsiString(CertTokenA3SerialNumber)),
+        PAnsiChar(AnsiString(CertTokenA3Pin)));
+
+      fileXml.LoadFromFile(fileName);
+      Writeln(fileXml.Text);        
+
       Writeln('');
     except
       on E: Exception do

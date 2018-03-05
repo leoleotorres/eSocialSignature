@@ -13,6 +13,8 @@ namespace eSocialSignature.Log
 
         public Logger(string fileName)
         {
+            Console.WriteLine($"Directory of LOG: {AppDomain.CurrentDomain.BaseDirectory}");
+            Console.WriteLine($"File of LOG: {fileName}");
             _fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
             ValidatePath();
         }
@@ -86,8 +88,13 @@ namespace eSocialSignature.Log
                 lock (_locker)
                 {
                     using (var file = new StreamWriter(_fileName, true))
+                    {
                         foreach (var message in messages)
+                        {
+                            Console.WriteLine(message);
                             file.WriteLine(message);
+                        }
+                    }
                 }
             }).Wait();
         }
