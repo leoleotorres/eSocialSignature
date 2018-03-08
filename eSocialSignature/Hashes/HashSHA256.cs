@@ -48,7 +48,6 @@ namespace eSocialSignature.Hashes
                 var doc = new XmlDocument();
                 try
                 {
-                    doc.PreserveWhitespace = true;
                     doc.LoadXml(xml);
                 }
                 catch (Exception e)
@@ -140,10 +139,10 @@ namespace eSocialSignature.Hashes
                 _log.Debug("Atualizando XML de saída");
 
                 var sb = new StringBuilder();
-                using (var writer = XmlWriter.Create(sb, new XmlWriterSettings { Indent = true }))
+                using (var writer = XmlWriter.Create(sb, new XmlWriterSettings { Indent = false }))
                     doc.WriteTo(writer);
 
-                _log.Debug($"XML Assinado:{Environment.NewLine}{Environment.NewLine}{sb}{Environment.NewLine}");
+                _log.Debug($"XML Assinado:{Environment.NewLine}{Environment.NewLine}{doc.OuterXml}{Environment.NewLine}");
 
                 var signatureCount = doc.GetElementsByTagName("Signature").Count;
                 _log.Debug($"Quantidade de assinaturas geradas: {signatureCount}");

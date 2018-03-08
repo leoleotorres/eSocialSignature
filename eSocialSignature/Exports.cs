@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Xml;
 using eSocialSignature.Hashes;
@@ -78,9 +79,8 @@ namespace eSocialSignature
                 var doc = new XmlDocument();
                 doc.Load(fileName);
                 var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
-                doc.InnerXml = xml;
-                doc.Save(fileName);
-
+                log.Info($"XML de Saída: {xml}");
+                File.WriteAllText(fileName, xml);
                 Console.WriteLine("Saved!");
             }
             catch (Exception e)
@@ -109,10 +109,8 @@ namespace eSocialSignature
                 var doc = new XmlDocument();
                 doc.Load(fileName);
                 var xml = new HashSHA256(log).Sign(doc.OuterXml, nodeToSign, certificateSerialNumber, certificatePassword);
-                doc.InnerXml = xml;
-                doc.Save(fileName);
-
-                Console.WriteLine("Saved!");
+                File.WriteAllText(fileName, xml);
+                Console.WriteLine("Salvo!");
             }
             catch (Exception e)
             {
